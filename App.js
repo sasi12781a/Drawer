@@ -4,7 +4,6 @@ import * as React from 'react';
 import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 function HomeScreen({ navigation }) {
   return (
@@ -25,23 +24,16 @@ function NotificationsScreen({ navigation }) {
   );
 }
 
-const Tab = createBottomTabNavigator();
+
 const Drawer=createDrawerNavigator();
 
-const D=()=>{
-  return(
-    <Drawer.Navigator initialRouteName="Home">
-      <Drawer.Screen name="Home" component={HomeScreen} />
-      <Drawer.Screen name="Notifications" component={NotificationsScreen} />
-    </Drawer.Navigator>
-  )
-}
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator >
-        <Tab.Screen name='home' component={D}/>
-      </Tab.Navigator>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+     </Drawer.Navigator>
     </NavigationContainer>
   );
 }
